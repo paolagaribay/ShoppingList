@@ -22,6 +22,35 @@
                 {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
+                },
+                {
+                    "name": "AddItem",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.food"
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "add {quantity} {item} to my shopping list",
+                        "add {item} to my shopping list"
+                    ]
+                },
+                {
+                    "name": "RemoveItem",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.food"
+                        }
+                    ],
+                    "samples": [
+                        "remove {item} from my shopping list"
+                    ]
                 }
             ],
             "types": []

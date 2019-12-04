@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "my shopping list",
+            "invocationName": "shopping list",
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",

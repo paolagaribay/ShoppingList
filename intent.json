@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "grocery list",
+            "invocationName": "my shopping list",
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",
@@ -28,15 +28,12 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "AMAZON.food"
-                        },
-                        {
-                            "name": "quantity",
-                            "type": "AMAZON.NUMBER"
+                            "type": "itemType"
                         }
                     ],
                     "samples": [
-                        "add {quantity} {item} to my shopping list",
+                        "add {item}",
+                        "add {item} to my list",
                         "add {item} to my shopping list"
                     ]
                 },
@@ -45,15 +42,160 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "AMAZON.food"
+                            "type": "itemType"
                         }
                     ],
                     "samples": [
+                        "remove {item} ",
+                        "remove {item} from my list",
                         "remove {item} from my shopping list"
                     ]
+                },
+                {
+                    "name": "ReadList",
+                    "slots": [],
+                    "samples": [
+                        "read my shopping list",
+                        "read the items on my shopping list",
+                        "what items do I have on my shopping list"
+                    ]
+                },
+                {
+                    "name": "Hello",
+                    "slots": [],
+                    "samples": [
+                        "hey",
+                        "hi",
+                        "hello"
+                    ]
+                },
+                {
+                    "name": "ClearList",
+                    "slots": [],
+                    "samples": [
+                        "clear my shopping list",
+                        "remove all items from my list",
+                        "clear list",
+                        "remove all items"
+                    ]
+                },
+                {
+                    "name": "AMAZON.MoreIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateSettingsIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NextIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PageUpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PageDownIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PreviousIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollRightIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollDownIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollLeftIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollUpIntent",
+                    "samples": []
                 }
             ],
-            "types": []
-        }
+            "types": [
+                {
+                    "name": "itemType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "butter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cheese"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "eggs"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "milk"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tomatoes"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "almonds"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "plums"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "strawberries"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "apples"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "ClearList",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.463827286217"
+                    },
+                    "slots": []
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.463827286217",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Are you sure you want to remove all items from your list?"
+                    }
+                ]
+            }
+        ]
     }
 }

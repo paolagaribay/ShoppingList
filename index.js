@@ -62,7 +62,7 @@ const ClearListHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ClearList';
     },
     handle(handlerInput) {
-        const speakOutput = 'I have removed all items from your shopping list.';
+        const speakOutput = 'I have removed all items from your Shopping List.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()

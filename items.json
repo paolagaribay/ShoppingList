@@ -28,7 +28,7 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "itemType"
+                            "type": "AMAZON.Food"
                         }
                     ],
                     "samples": [
@@ -42,7 +42,7 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "itemType"
+                            "type": "AMAZON.Food"
                         }
                     ],
                     "samples": [
@@ -120,58 +120,7 @@
                     "samples": []
                 }
             ],
-            "types": [
-                {
-                    "name": "itemType",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "butter"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "cheese"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "eggs"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "milk"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "tomatoes"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "almonds"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "plums"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "strawberries"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "apples"
-                            }
-                        }
-                    ]
-                }
-            ]
+            "types": []
         },
         "dialog": {
             "intents": [

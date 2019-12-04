@@ -1,12 +1,8 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "dodo",
+            "invocationName": "shopping list",
             "intents": [
-                {
-                    "name": "AMAZON.FallbackIntent",
-                    "samples": []
-                },
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": []
@@ -24,43 +20,6 @@
                     "samples": []
                 },
                 {
-                    "name": "AddItem",
-                    "slots": [
-                        {
-                            "name": "item",
-                            "type": "AMAZON.Food"
-                        }
-                    ],
-                    "samples": [
-                        "add {item}",
-                        "add {item} to my list",
-                        "add {item} to my shopping list"
-                    ]
-                },
-                {
-                    "name": "RemoveItem",
-                    "slots": [
-                        {
-                            "name": "item",
-                            "type": "AMAZON.Food"
-                        }
-                    ],
-                    "samples": [
-                        "remove {item} ",
-                        "remove {item} from my list",
-                        "remove {item} from my shopping list"
-                    ]
-                },
-                {
-                    "name": "ReadList",
-                    "slots": [],
-                    "samples": [
-                        "read my shopping list",
-                        "read the items on my shopping list",
-                        "what items do I have on my shopping list"
-                    ]
-                },
-                {
                     "name": "Hello",
                     "slots": [],
                     "samples": [
@@ -70,54 +29,63 @@
                     ]
                 },
                 {
+                    "name": "AddItem",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.Food",
+                            "samples": [
+                                "I want to add {item}",
+                                "{item}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "add {item} to my shopping list",
+                        "put {item} on my list",
+                        "add {item} to my list",
+                        "add {item}"
+                    ]
+                },
+                {
+                    "name": "RemoveItem",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.Food",
+                            "samples": [
+                                "I want to remove {item}",
+                                "{item}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "remove {item} from my shopping list",
+                        "remove {item} from my list",
+                        "take off {item}",
+                        "delete {item}",
+                        "remove {item}"
+                    ]
+                },
+                {
                     "name": "ClearList",
                     "slots": [],
                     "samples": [
                         "clear my shopping list",
                         "remove all items from my list",
-                        "clear list",
-                        "remove all items"
+                        "remove all items",
+                        "clear my list",
+                        "clear list"
                     ]
                 },
                 {
-                    "name": "AMAZON.MoreIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.NavigateSettingsIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.NextIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.PageUpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.PageDownIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.PreviousIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.ScrollRightIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.ScrollDownIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.ScrollLeftIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.ScrollUpIntent",
-                    "samples": []
+                    "name": "ReadList",
+                    "slots": [],
+                    "samples": [
+                        "what items do i have on my list",
+                        "read my shopping list",
+                        "read the items on my list"
+                    ]
                 }
             ],
             "types": []
@@ -128,20 +96,70 @@
                     "name": "ClearList",
                     "confirmationRequired": true,
                     "prompts": {
-                        "confirmation": "Confirm.Intent.463827286217"
+                        "confirmation": "Confirm.Intent.139300853788"
                     },
                     "slots": []
+                },
+                {
+                    "name": "AddItem",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.Food",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.49392774239.266357504039"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "RemoveItem",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "AMAZON.Food",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.298516172735.306916072407"
+                            }
+                        }
+                    ]
                 }
             ],
             "delegationStrategy": "ALWAYS"
         },
         "prompts": [
             {
-                "id": "Confirm.Intent.463827286217",
+                "id": "Confirm.Intent.139300853788",
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Are you sure you want to remove all items from your list?"
+                        "value": "Are you sure you want to clear your Shopping List?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.49392774239.266357504039",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What item do you wish to add?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.298516172735.306916072407",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What item do you wish to remove?"
                     }
                 ]
             }

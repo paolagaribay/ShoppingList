@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello! Welcome to your Shopping List.';
+        const speakOutput = 'Hello! Welcome to your Shopping List. Add or Remove items to your list. Read or Clear your list.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -21,16 +21,8 @@ const AddItemHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AddItem';
     },
     handle(handlerInput) {
-        const request = handlerInput.requestEnvelope.request; 
-        
-        var i = request.intent.slots.item.value;
-        var speakOutput = '';
-        if (i && i !== '') {
-            speakOutput = 'I added '+i+' to your shopping list.';
-        }
-        else {
-            speakOutput = 'I do not understand what you want added.';
-        }
+        const itemName = handlerInput.requestEnvelope.request.intent.slots.item.value;
+        const speakOutput = 'I added '+itemName+' to your Shopping List.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()
@@ -44,15 +36,8 @@ const RemoveItemHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RemoveItem';
     },
     handle(handlerInput) {
-        const request = handlerInput.requestEnvelope.request; 
-        var i = request.intent.slots.item.value;
-        var speakOutput = '';
-        if (i && i !== '') {
-            speakOutput = 'I removed '+i+' from your shopping list.';
-        }
-        else {
-            speakOutput = 'I do not understand what you want removed.';
-        }
+        const itemName = handlerInput.requestEnvelope.request.intent.slots.item.value;
+        const speakOutput = 'I removed '+itemName+' from your Shopping List.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()
@@ -66,7 +51,7 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Hello';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello';
+        const speakOutput = 'Hello, how can I help you?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()//.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -107,7 +92,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'You can add items to your shopping list, remove items from your shopping list, clear your list, or read out the items on your list.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -122,7 +107,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'Now closing your Shopping List.';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -182,12 +167,12 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
-        HelpIntentHandler,
-        CancelAndStopIntentHandler,
         AddItemHandler,
         RemoveItemHandler,
         ReadListHandler,
         ClearListHandler,
+        HelpIntentHandler,
+        CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
     )

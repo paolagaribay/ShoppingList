@@ -44,7 +44,9 @@
                         "add {item} to my shopping list",
                         "put {item} on my list",
                         "add {item} to my list",
-                        "add {item}"
+                        "add {item}",
+                        "I want {item} on my grocery list",
+                        "need {item} on my grocery list"
                     ]
                 },
                 {
@@ -64,7 +66,9 @@
                         "remove {item} from my list",
                         "take off {item}",
                         "delete {item}",
-                        "remove {item}"
+                        "remove {item}",
+                        "I don't need {item} anymore",
+                        "I don't want {item} anymore"
                     ]
                 },
                 {
@@ -84,7 +88,8 @@
                     "samples": [
                         "what items do i have on my list",
                         "read my shopping list",
-                        "read the items on my list"
+                        "read the items on my list",
+                        "what groceries do I need"
                     ]
                 }
             ],
